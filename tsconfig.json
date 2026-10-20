@@ -1,0 +1,15 @@
+{
+  // Nur für den Editor: Node.js führt die .ts-Dateien direkt aus. Synthetische Schulungsdaten.
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": ["src", "scripts", "request-logger"]
+}

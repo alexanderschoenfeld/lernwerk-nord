@@ -1,0 +1,95 @@
+-- Startdaten der Lernplattform von Lernwerk Nord. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
+-- Erzeugt von scripts/fall_lernwerk.py im Schulungs-Repo; npm run reset lädt sie in db/lernwerk.db.
+-- Alle Konten haben das Passwort „lernwerk“.
+
+INSERT INTO kuratorinnen (id, name, email, passwort_hash) VALUES (1, 'Henrike Sommer', 'henrike.sommer@lernwerk-nord.example', 'scrypt$5d0fd3edd013d807e3e3b041954c5e49$026abd1be3a9449ad6a2dd25c1a58f19535c84978130f4081f575aead40ae9eb');
+
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (1, 'Jonas Albers', 'jonas.albers@lernwerk-nord.example', 'scrypt$880d5e6e8b9f31f0f3a2210782d2a284$2bd5c1d77b1905b3bb80dc6e1ab0d40dde66f380f838c96041ce23ab3b44482d', '2026-01-04T16:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (2, 'Leonie Brandt', 'leonie.brandt@lernwerk-nord.example', 'scrypt$a86a5aca2de2023120fe457f6c30c04c$b837148a6231ec638e87aaf4da5fc3ba7642776f69efcb385e8c66dea22bb5ce', '2026-01-11T11:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (3, 'Emil Carstens', 'emil.carstens@lernwerk-nord.example', 'scrypt$5b0afdce320cd9792d15a7c11d2b7bbe$1fac386029a72c5abcefb49999d38b8cf252318594e3b04a8c8852b812304eab', '2026-02-19T16:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (4, 'Mia Dittmer', 'mia.dittmer@lernwerk-nord.example', 'scrypt$332ff8f80b5452623ec63018b08f3e83$3a1031e86ecd2748e984532c46fe4873e806b8218e780e7e6f6b8bc78433d6c5', '2026-02-26T17:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (5, 'Paul Ehlers', 'paul.ehlers@lernwerk-nord.example', 'scrypt$ab0605027050d6c5ff6627eae74c86ef$e0bf1eaf027ec878df1709cbbde574437f6bc7bcd5909ae3f729a6afa3681753', '2026-03-01T09:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (6, 'Lina Feddersen', 'lina.feddersen@lernwerk-nord.example', 'scrypt$6f8d108fb1cd7b963f4d0fff916ff143$fcecb4ef747a0bf0e4adcf55929519ee04c0924aca06402f2202c789e7792cbf', '2026-03-08T12:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (7, 'Theo Grote', 'theo.grote@lernwerk-nord.example', 'scrypt$6ec178c32cd4f0ef101357b80d23790d$90c076c4e44bc3f7748575d89de6f92a7db5a110d8213e85e6adff6b6e6c0687', '2026-03-20T15:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (8, 'Ida Hansen', 'ida.hansen@lernwerk-nord.example', 'scrypt$f3e93ddb4cf3026f9640fa0833de7b95$a08cd4b9c92f54fecb39cd7daa57dc785628320d6fc2c7674568d830b8a51d75', '2026-04-22T15:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (9, 'Ben Iversen', 'ben.iversen@lernwerk-nord.example', 'scrypt$dc3ab8270af9ca2177a475dc65b33426$a031f22023c11d66c343c9dbb7223910c127b078622691470a96b1057574bbe8', '2026-04-27T11:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (10, 'Frieda Jessen', 'frieda.jessen@lernwerk-nord.example', 'scrypt$baec84bedc94d2939ead73f8c21aac1f$a15511cf2a09630c069716a40f4696f28a81a30bdd2ceca4356746f66b95d1e0', '2026-05-09T14:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (11, 'Noah Kruse', 'noah.kruse@lernwerk-nord.example', 'scrypt$e163886558fc31bb1e4fd27299e6f3cb$dc14d741df805611ea2ec6a4657de1f33084f15b8af3e2bb5c3850b5627e9e35', '2026-05-12T19:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (12, 'Greta Lorenzen', 'greta.lorenzen@lernwerk-nord.example', 'scrypt$990d19f969c1405fd065ea2b5c60f522$c1cf9a3468e3a71f306dd0aa68a85d06b864d518a455263e1f28f9f325eb9a4a', '2026-05-26T09:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (13, 'Finn Martens', 'finn.martens@lernwerk-nord.example', 'scrypt$6f1cb324f87add0d8c4c30cd430bfe23$0eb75650c6ec733b9828273aaa08186ffbd9ec6ac2c5e16d1f23723e6ef6a066', '2026-06-10T10:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (14, 'Ella Nissen', 'ella.nissen@lernwerk-nord.example', 'scrypt$2e74588d0adf4443ae9c58d34a02f18c$67987ad76c899481147e5392328c535a699b834442f9d8c69f1e1ae85f7e0d64', '2026-06-15T08:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (15, 'Luis Ohlsen', 'luis.ohlsen@lernwerk-nord.example', 'scrypt$9075cfa47e8ac0f543d527656524dcfe$56cdf87a990ff44af05e9d5f25a6e79ada27d389caae2ce272149364f868ba8a', '2026-07-12T14:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (16, 'Mathilda Petersen', 'mathilda.petersen@lernwerk-nord.example', 'scrypt$082e6363e3b245b1beff398f8d655a55$f01ffcab7831223ad9699ba3d9a949e505a288354577ee19961e93b9a851c6f0', '2026-07-15T14:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (17, 'Anton Quast', 'anton.quast@lernwerk-nord.example', 'scrypt$33773dc89bd504fe7eb205c89ed2276c$630682f4e68468c164560ba608102ea9d81cab78c7db8a9fdda83a36274d005e', '2026-08-28T09:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (18, 'Romy Rasmussen', 'romy.rasmussen@lernwerk-nord.example', 'scrypt$288e41252c10d4767e408cab3f585172$cd0fa23257f5bb692552319c6478e3c3aff8ce78817684f4ec6f6e21742041d5', '2026-09-17T15:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (19, 'Henry Schütt', 'henry.schuett@lernwerk-nord.example', 'scrypt$ba2f6107b928afa5c24514fdd127b93a$1a17387c9af418bab768924adfe9df3f9ae5e8894650bc222dc698cd7e1bf032', '2026-09-20T16:30:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (20, 'Lotta Thomsen', 'lotta.thomsen@lernwerk-nord.example', 'scrypt$40a472037dc1d544ce1aa60061d802f8$fcc45758b89da1cf91a27735351d0a528169808729e7ace711efc380c6007cba', '2026-09-25T14:45:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (21, 'Oskar Utecht', 'oskar.utecht@lernwerk-nord.example', 'scrypt$4b3629369aa851c8d51e5215a244abef$d67af1426f07c66fd17865b032c55e3e45b6b372899981e594f2bd3ea0d5d61e', '2026-09-26T16:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (22, 'Pia Voss', 'pia.voss@lernwerk-nord.example', 'scrypt$1e9054a5c0979ff28e9e51d7a10a8e21$1547d6b4063e75d96748d250cc2f652f8697fe83fe0e50d823879e9429a79889', '2026-09-28T17:15:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (23, 'Karl Wendt', 'karl.wendt@lernwerk-nord.example', 'scrypt$eca7a17d7e9c833d3fdeaf9b6ef1b577$413916301da7f51d2f16a1eb293bc2c0fe80a8817bb625e5c043e004b309060b', '2026-10-07T08:00:00');
+INSERT INTO lernende (id, name, email, passwort_hash, angemeldet_am) VALUES (24, 'Nele Zander', 'nele.zander@lernwerk-nord.example', 'scrypt$a8b0f06ff1ea849f22ef97e5babf28b5$245654b76a8f69103d6a6bd9b463737843b1d6cc6118f5096094c9615a52be4d', '2026-10-19T16:42:00');
+
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (1, 'agent-fuer-routineaufgaben', 'Ein Agent für Routineaufgaben', 'Agenten', 'einsteiger', 45, 'veroeffentlicht', 'Sie lassen einen Agenten eine wiederkehrende Aufgabe in einer kleinen Codebasis erledigen und prüfen das Ergebnis.', 1, '2026-02-02');
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (2, 'ablaeufe-automatisieren', 'Abläufe automatisieren mit Skripten und KI', 'Automatisierung', 'einsteiger', 50, 'veroeffentlicht', 'Sie schreiben mit KI-Unterstützung ein Skript, das einen Bericht jede Woche selbst erstellt.', 1, '2026-03-09');
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (3, 'web-app-hosten', 'Eine Web-App hosten', 'Hosting', 'fortgeschritten', 60, 'veroeffentlicht', 'Sie bringen eine kleine Web-App mit Datenbank auf einen Server und richten den Neustart nach Fehlern ein.', 1, '2026-05-11');
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (4, 'nutzer-und-rollen', 'Nutzer und Rollen verwalten', 'Nutzerverwaltung', 'fortgeschritten', 55, 'veroeffentlicht', 'Sie ergänzen eine Anmeldung um Rollen und prüfen, dass jede Rolle nur sieht, was sie sehen darf.', 1, '2026-07-06');
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (5, 'lernfortschritt-anzeigen', 'Wunsch-Feature: Lernfortschritt anzeigen', 'Wunsch-Feature', 'einsteiger', 40, 'entwurf', 'Sie zeigen Lernenden auf der Übersicht, welche Lernpakete begonnen und welche abgeschlossen sind.', 1, NULL);
+INSERT INTO lernpakete (id, slug, titel, thema, niveau, dauer_minuten, status, beschreibung, kuratiert_von, veroeffentlicht_am) VALUES (6, 'benachrichtigung-per-e-mail', 'Wunsch-Feature: Benachrichtigung per E-Mail', 'Wunsch-Feature', 'fortgeschritten', 60, 'entwurf', 'Sie benachrichtigen Lernende per E-Mail, sobald die Kuratorin ein neues Lernpaket veröffentlicht.', 1, NULL);
+
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (1, 1, 'workbook', 'Workbook', 'inhalte/agent-fuer-routineaufgaben/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (2, 1, 'anleitung', 'Anleitung', 'inhalte/agent-fuer-routineaufgaben/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (3, 1, 'erklaerseite', 'Erklärseite: Agenten auf einen Blick', 'inhalte/agent-fuer-routineaufgaben/erklaerseite.html');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (4, 2, 'workbook', 'Workbook', 'inhalte/ablaeufe-automatisieren/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (5, 2, 'anleitung', 'Anleitung', 'inhalte/ablaeufe-automatisieren/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (6, 2, 'erklaerseite', 'Erklärseite: Automatisierung auf einen Blick', 'inhalte/ablaeufe-automatisieren/erklaerseite.html');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (7, 3, 'workbook', 'Workbook', 'inhalte/web-app-hosten/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (8, 3, 'anleitung', 'Anleitung', 'inhalte/web-app-hosten/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (9, 3, 'erklaerseite', 'Erklärseite: Hosting auf einen Blick', 'inhalte/web-app-hosten/erklaerseite.html');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (10, 4, 'workbook', 'Workbook', 'inhalte/nutzer-und-rollen/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (11, 4, 'anleitung', 'Anleitung', 'inhalte/nutzer-und-rollen/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (12, 4, 'erklaerseite', 'Erklärseite: Nutzerverwaltung auf einen Blick', 'inhalte/nutzer-und-rollen/erklaerseite.html');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (13, 5, 'workbook', 'Workbook', 'inhalte/lernfortschritt-anzeigen/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (14, 5, 'anleitung', 'Anleitung', 'inhalte/lernfortschritt-anzeigen/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (15, 5, 'erklaerseite', 'Erklärseite: Wunsch-Feature auf einen Blick', 'inhalte/lernfortschritt-anzeigen/erklaerseite.html');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (16, 6, 'workbook', 'Workbook', 'inhalte/benachrichtigung-per-e-mail/workbook.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (17, 6, 'anleitung', 'Anleitung', 'inhalte/benachrichtigung-per-e-mail/anleitung.md');
+INSERT INTO bestandteile (id, lernpaket_id, art, titel, pfad) VALUES (18, 6, 'erklaerseite', 'Erklärseite: Wunsch-Feature auf einen Blick', 'inhalte/benachrichtigung-per-e-mail/erklaerseite.html');
+
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (2, 2, '2026-03-12', '2026-03-17');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (2, 3, '2026-05-16', '2026-05-25');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (3, 1, '2026-02-24', '2026-03-08');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (3, 2, '2026-03-14', '2026-03-17');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (3, 4, '2026-07-12', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (4, 3, '2026-05-19', '2026-05-30');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (4, 4, '2026-07-16', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (5, 1, '2026-03-05', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (6, 2, '2026-03-16', '2026-03-17');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (6, 3, '2026-05-16', '2026-05-17');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (6, 4, '2026-07-16', '2026-07-28');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (8, 2, '2026-05-01', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (8, 4, '2026-07-08', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (9, 4, '2026-07-12', '2026-07-20');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (10, 4, '2026-07-14', '2026-07-21');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (11, 2, '2026-05-20', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (11, 4, '2026-07-16', '2026-07-19');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (12, 2, '2026-05-30', '2026-05-31');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (13, 1, '2026-06-18', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (13, 4, '2026-07-11', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (14, 2, '2026-06-22', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (15, 3, '2026-07-17', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (16, 1, '2026-07-19', '2026-08-01');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (16, 2, '2026-07-25', '2026-08-04');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (17, 1, '2026-08-30', '2026-09-05');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (17, 4, '2026-08-31', '2026-09-10');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (18, 1, '2026-09-22', '2026-09-26');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (19, 1, '2026-09-25', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (19, 2, '2026-09-27', '2026-10-02');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (19, 3, '2026-09-23', '2026-09-25');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (19, 4, '2026-09-26', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (20, 2, '2026-09-26', '2026-10-05');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (20, 4, '2026-10-01', '2026-10-13');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (23, 1, '2026-10-10', '2026-10-16');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (23, 3, '2026-10-16', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (23, 4, '2026-10-15', NULL);
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (24, 3, '2026-10-20', '2026-10-20');
+INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (24, 4, '2026-10-20', NULL);

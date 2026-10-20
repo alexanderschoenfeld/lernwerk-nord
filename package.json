@@ -1,0 +1,16 @@
+{
+  "name": "lernwerk-nord",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lernplattform von Lernwerk Nord (fiktiv) – synthetische Schulungsdaten",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning scripts/start.ts",
+    "reset": "node --disable-warning=ExperimentalWarning scripts/reset.ts",
+    "sql": "node --disable-warning=ExperimentalWarning scripts/sql.ts",
+    "request-logger": "node --disable-warning=ExperimentalWarning request-logger/server.ts"
+  }
+}

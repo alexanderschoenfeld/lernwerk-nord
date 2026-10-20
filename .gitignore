@@ -1,0 +1,7 @@
+# Lernplattform Lernwerk Nord – synthetische Schulungsdaten
+node_modules/
+db/lernwerk.db
+.env
+request-logger/logs/*
+!request-logger/logs/.gitkeep
+request-logger/einstellungen.json

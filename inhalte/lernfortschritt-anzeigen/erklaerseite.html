@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Wunsch-Feature auf einen Blick – Lernwerk Nord</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 48rem; margin: 2rem auto; color: #1f2933; }
+.schritt { display: none; padding: 1rem; border-left: 4px solid #12355b; background: #f5f7fa; margin: 1rem 0; }
+.schritt.sichtbar { display: block; }
+</style></head>
+<body>
+<h1>Wunsch-Feature auf einen Blick</h1>
+<p>Erklärseite zum Lernpaket „Wunsch-Feature: Lernfortschritt anzeigen“. Weiter mit der Schaltfläche.</p>
+<div class="schritt sichtbar">1. Worum es geht: Sie zeigen Lernenden auf der Übersicht, welche Lernpakete begonnen und welche abgeschlossen sind.</div>
+<div class="schritt">2. Was der Agent dabei tut: Er liest die Dateien, schlägt Änderungen vor und führt sie nach Ihrer Freigabe aus.</div>
+<div class="schritt">3. Was Sie prüfen: ob das Ergebnis läuft und ob der Agent nur geändert hat, was verlangt war.</div>
+<button onclick="const n=[...document.querySelectorAll('.schritt')].find(s=>!s.classList.contains('sichtbar')); if(n) n.classList.add('sichtbar');">Weiter</button>
+<p><small>Lernwerk Nord ist fiktiv – synthetische Schulungsdaten</small></p>
+</body></html>
