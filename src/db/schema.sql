@@ -44,3 +44,10 @@ CREATE TABLE belegungen (
   abgeschlossen_am TEXT,
   PRIMARY KEY (lernende_id, lernpaket_id)
 );
+
+CREATE TABLE aufrufe (
+  lernende_id INTEGER NOT NULL REFERENCES lernende(id),
+  bestandteil_id INTEGER NOT NULL REFERENCES bestandteile(id),
+  geoeffnet_am TEXT NOT NULL,
+  PRIMARY KEY (lernende_id, bestandteil_id)
+);

@@ -93,3 +93,10 @@ INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am
 INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (23, 4, '2026-10-15', NULL);
 INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (24, 3, '2026-10-20', '2026-10-20');
 INSERT INTO belegungen (lernende_id, lernpaket_id, begonnen_am, abgeschlossen_am) VALUES (24, 4, '2026-10-20', NULL);
+
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 1, '2026-10-05');
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 2, '2026-10-05');
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 3, '2026-10-05');
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 4, '2026-10-12');
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 10, '2026-10-19');
+INSERT INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (1, 11, '2026-10-19');

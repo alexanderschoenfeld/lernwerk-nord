@@ -1,5 +1,6 @@
 // HTML der Seiten. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 import type { Konto } from "./auth.ts";
+import type { Zustand } from "./fortschritt.ts";
 import type { Bestandteil, Lernpaket } from "./lernpakete.ts";
 
 const STIL = `
@@ -14,6 +15,7 @@ const STIL = `
   input { padding: 0.5rem; width: 20rem; }
   button { margin-top: 1rem; padding: 0.5rem 1.5rem; background: #12355b; color: white; border: 0; border-radius: 4px; }
   .fehler { color: #b91c1c; }
+  .zustand { font-weight: bold; color: #12355b; }
 `;
 
 function escape(text: string): string {
@@ -41,13 +43,13 @@ ${fehler ? '<p class="fehler">E-Mail oder Passwort stimmt nicht.</p>' : ""}
   );
 }
 
-export function uebersicht(konto: Konto, pakete: Lernpaket[]): string {
+export function uebersicht(konto: Konto, pakete: Lernpaket[], zustaende?: Map<number, Zustand>): string {
   const karten = pakete
     .map(
       (p) => `<div class="karte${p.status === "entwurf" ? " entwurf" : ""}">
 <h2><a href="/lernpakete/${p.slug}">${escape(p.titel)}</a></h2>
 <p>${escape(p.thema)} · ${p.niveau} · ${p.dauer_minuten} Minuten${p.status === "entwurf" ? " · Entwurf" : ""}</p>
-<p>${escape(p.beschreibung)}</p></div>`,
+<p>${escape(p.beschreibung)}</p>${zustaende?.has(p.id) ? `<p class="zustand">Fortschritt: ${zustaende.get(p.id)}</p>` : ""}</div>`,
     )
     .join("\n");
   return rahmen("Lernpakete", `<h1>Lernpakete</h1>${karten}`, konto);

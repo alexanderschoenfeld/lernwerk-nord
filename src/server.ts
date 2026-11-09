@@ -5,6 +5,7 @@ import { extname, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { abmelden, anmelden, kontoZu } from "./auth.ts";
 import { verbinden } from "./db/verbindung.ts";
+import { aufrufFesthalten, fortschritt } from "./fortschritt.ts";
 import { bestandteileVon, lernpaket, sichtbareLernpakete } from "./lernpakete.ts";
 import { anmeldeseite, detailseite, uebersicht } from "./seiten.ts";
 
@@ -52,7 +53,8 @@ createServer(async (anfrage, antwort) => {
   if (!konto) return umleiten(antwort, "/");
 
   if (url.pathname === "/lernpakete") {
-    return senden(antwort, 200, uebersicht(konto, sichtbareLernpakete(db, konto.rolle)));
+    const zustaende = konto.rolle === "lernende" ? fortschritt(db, konto.id) : undefined;
+    return senden(antwort, 200, uebersicht(konto, sichtbareLernpakete(db, konto.rolle), zustaende));
   }
   const detail = /^\/lernpakete\/([a-z0-9-]+)$/.exec(url.pathname);
   if (detail) {
@@ -65,6 +67,7 @@ createServer(async (anfrage, antwort) => {
     if (pfad.includes("..")) return senden(antwort, 400, "Ungültiger Pfad");
     try {
       const inhalt = await readFile(WURZEL + pfad, "utf-8");
+      if (konto.rolle === "lernende") aufrufFesthalten(db, konto.id, pfad);
       return senden(antwort, 200, inhalt, { "content-type": TYPEN[extname(pfad)] ?? "text/plain; charset=utf-8" });
     } catch {
       return senden(antwort, 404, "Nicht gefunden");
