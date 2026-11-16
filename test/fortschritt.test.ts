@@ -1,4 +1,4 @@
-// Tests zum Lernfortschritt (Ticket 01), mit npm test. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
+// Tests zum Lernfortschritt (Tickets 01 bis 03), mit npm test. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { DatabaseSync } from "node:sqlite";
@@ -52,4 +52,33 @@ test("sind alle drei Bestandteile geöffnet, ist das Lernpaket abgeschlossen", (
   aufrufFesthalten(db, LERNENDE, TEILE + "workbook.md", "2026-11-11");
   assert.equal(fortschritt(db, LERNENDE).get(PAKET), "abgeschlossen");
   assert.deepEqual({ ...belegung(db) }, { begonnen_am: "2026-11-09", abgeschlossen_am: "2026-11-11" });
+});
+
+test("nur das Workbook geöffnet ergibt begonnen, nicht abgeschlossen (E1)", () => {
+  const db = datenbank();
+  aufrufFesthalten(db, LERNENDE, TEILE + "workbook.md", "2026-11-09");
+  assert.equal(fortschritt(db, LERNENDE).get(PAKET), "begonnen");
+  assert.deepEqual({ ...belegung(db) }, { begonnen_am: "2026-11-09", abgeschlossen_am: null });
+});
+
+test("ein Aufruf eines Entwurfs legt weder Aufruf noch Belegung an (E7)", () => {
+  const db = datenbank();
+  aufrufFesthalten(db, LERNENDE, "inhalte/lernfortschritt-anzeigen/workbook.md", "2026-11-09");
+  const zaehlen = (tabelle: string) => (db.prepare(`SELECT count(*) AS n FROM ${tabelle} WHERE lernende_id = ?`).get(LERNENDE) as { n: number }).n;
+  assert.equal(zaehlen("aufrufe"), 0);
+  assert.equal(zaehlen("belegungen"), 0);
+});
+
+test("erneutes Öffnen ändert den Tag des Abschlusses nicht (E9)", () => {
+  const db = datenbank();
+  for (const datei of ["anleitung.md", "erklaerseite.html", "workbook.md"]) aufrufFesthalten(db, LERNENDE, TEILE + datei, "2026-11-09");
+  aufrufFesthalten(db, LERNENDE, TEILE + "workbook.md", "2026-11-20");
+  assert.equal(fortschritt(db, LERNENDE).get(PAKET), "abgeschlossen");
+  assert.deepEqual({ ...belegung(db) }, { begonnen_am: "2026-11-09", abgeschlossen_am: "2026-11-09" });
+});
+
+test("Belegungen aus den Startdaten gelten weiter (E8)", () => {
+  const db = datenbank();
+  assert.equal(fortschritt(db, 2).get(2), "abgeschlossen"); // Leonie Brandt, abgeschlossen am 2026-03-17
+  assert.equal(fortschritt(db, 3).get(4), "begonnen"); // Emil Carstens, begonnen ohne Abschluss
 });

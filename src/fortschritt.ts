@@ -1,4 +1,4 @@
-// Lernfortschritt: Aufrufe von Bestandteilen festhalten und den Zustand je Lernpaket ableiten (Ticket 01). Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
+// Lernfortschritt: Aufrufe von Bestandteilen festhalten und den Zustand je Lernpaket ableiten. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 import type { DatabaseSync } from "node:sqlite";
 
 export type Zustand = "nicht begonnen" | "begonnen" | "abgeschlossen";
@@ -8,21 +8,25 @@ function heute(): string {
 }
 
 function zustandVon(db: DatabaseSync, lernendeId: number, lernpaketId: number): Zustand {
-  const arten = (
-    db
-      .prepare(
-        "SELECT b.art FROM aufrufe a JOIN bestandteile b ON b.id = a.bestandteil_id WHERE a.lernende_id = ? AND b.lernpaket_id = ?",
-      )
-      .all(lernendeId, lernpaketId) as { art: string }[]
-  ).map((z) => z.art);
-  if (arten.length === 0) return "nicht begonnen";
-  // Das Workbook führt durch das ganze Lernpaket; wer es geöffnet hat, hat das Lernpaket durchgearbeitet.
-  return arten.includes("workbook") ? "abgeschlossen" : "begonnen";
+  const belegung = db
+    .prepare("SELECT abgeschlossen_am FROM belegungen WHERE lernende_id = ? AND lernpaket_id = ?")
+    .get(lernendeId, lernpaketId) as { abgeschlossen_am: string | null } | undefined;
+  if (belegung?.abgeschlossen_am) return "abgeschlossen";
+  const { geoeffnet, gesamt } = db
+    .prepare(
+      "SELECT (SELECT count(*) FROM aufrufe a JOIN bestandteile b ON b.id = a.bestandteil_id WHERE a.lernende_id = ? AND b.lernpaket_id = ?) AS geoeffnet, " +
+        "(SELECT count(*) FROM bestandteile WHERE lernpaket_id = ?) AS gesamt",
+    )
+    .get(lernendeId, lernpaketId, lernpaketId) as { geoeffnet: number; gesamt: number };
+  if (geoeffnet > 0 && geoeffnet === gesamt) return "abgeschlossen";
+  return belegung || geoeffnet > 0 ? "begonnen" : "nicht begonnen";
 }
 
 export function aufrufFesthalten(db: DatabaseSync, lernendeId: number, pfad: string, am = heute()): void {
   const teil = db
-    .prepare("SELECT id, lernpaket_id FROM bestandteile WHERE pfad = ?")
+    .prepare(
+      "SELECT b.id, b.lernpaket_id FROM bestandteile b JOIN lernpakete p ON p.id = b.lernpaket_id WHERE b.pfad = ? AND p.status = 'veroeffentlicht'",
+    )
     .get(pfad.replaceAll("\\", "/")) as { id: number; lernpaket_id: number } | undefined;
   if (!teil) return;
   db.prepare("INSERT OR IGNORE INTO aufrufe (lernende_id, bestandteil_id, geoeffnet_am) VALUES (?, ?, ?)").run(lernendeId, teil.id, am);
