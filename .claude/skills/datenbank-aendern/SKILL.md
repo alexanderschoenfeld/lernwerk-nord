@@ -10,7 +10,7 @@ Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 ## Was du wissen musst
 
 - Die Datenbank ist die Datei `db/lernwerk.db`; sie steht in `.gitignore`, enthält nur Startdaten und darf jederzeit weggeworfen werden.
-- Maßgeblich für Tabellen und Felder ist `src/db/schema.sql`, nicht `docs/datenmodell.md`; diese Beschreibung ist veraltet.
+- Maßgeblich für Tabellen und Felder ist `src/db/schema.sql`; `docs/datenmodell.md` beschreibt sie und muss zum Schema passen.
 - Es gibt keine Migrationen und kein ORM. `npm run reset` löscht `db/lernwerk.db` und legt sie aus `src/db/schema.sql` und `db/seed.sql` neu an.
 - Die Lernplattform nutzt `node:sqlite` aus Node.js; installiere kein Paket für die Datenbank.
 - Daten in `db/lernwerk.db`, die nicht aus `db/seed.sql` stammen, gehen beim nächsten `npm run reset` verloren.
@@ -25,10 +25,11 @@ Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 6. Führe `npm run reset` aus. Meldet es einen Fehler, passen Schema und Startdaten nicht zusammen.
 7. Prüfe das Ergebnis mit `npm run sql -- "SELECT ..."`, etwa die Zahl der Zeilen der geänderten Tabelle.
 8. Nutzt Code unter `src/` die geänderte Tabelle, passe dort die Abfrage und den Typ an, etwa in `src/lernpakete.ts` den Typ `Lernpaket`.
-9. Ändere das Schema nie nur in `db/lernwerk.db`, etwa mit `ALTER TABLE` über `npm run sql`; der nächste `npm run reset` verwirft die Änderung.
+9. Trage jede neue oder geänderte Tabelle, jedes Feld und jeden erlaubten Wert in `docs/datenmodell.md` nach.
+10. Ändere das Schema nie nur in `db/lernwerk.db`, etwa mit `ALTER TABLE` über `npm run sql`; der nächste `npm run reset` verwirft die Änderung.
 
 ## Prüfen, bevor du fertig meldest
 
 - `npm run reset` läuft ohne Fehler.
 - `npm run dev` startet, und die Übersicht unter http://localhost:3000 lädt nach der Anmeldung.
-- `git diff` zeigt Änderungen nur in `src/db/schema.sql`, `db/seed.sql` und den Dateien unter `src/`, die die Tabelle nutzen.
+- `git diff` zeigt Änderungen nur in `src/db/schema.sql`, `db/seed.sql`, `docs/datenmodell.md` und den Dateien unter `src/`, die die Tabelle nutzen.
