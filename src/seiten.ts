@@ -1,6 +1,7 @@
 // HTML der Seiten. Lernwerk Nord ist fiktiv – synthetische Schulungsdaten.
 import type { Konto } from "./auth.ts";
 import type { Zustand } from "./fortschritt.ts";
+import type { Neuigkeit } from "./neuigkeiten.ts";
 import type { Bestandteil, Lernpaket } from "./lernpakete.ts";
 
 const STIL = `
@@ -10,6 +11,7 @@ const STIL = `
   main { max-width: 60rem; margin: 2rem auto; padding: 0 1rem; }
   .karte { background: white; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 3px #0002; }
   .entwurf { border-left: 6px solid #d97706; }
+  .neu { border-left: 6px solid #15803d; }
   footer { text-align: center; color: #6b7280; font-size: 0.85rem; margin: 2rem; }
   label { display: block; margin-top: 1rem; }
   input { padding: 0.5rem; width: 20rem; }
@@ -43,7 +45,7 @@ ${fehler ? '<p class="fehler">E-Mail oder Passwort stimmt nicht.</p>' : ""}
   );
 }
 
-export function uebersicht(konto: Konto, pakete: Lernpaket[], zustaende?: Map<number, Zustand>): string {
+export function uebersicht(konto: Konto, pakete: Lernpaket[], zustaende?: Map<number, Zustand>, neu: Neuigkeit[] = []): string {
   const karten = pakete
     .map(
       (p) => `<div class="karte${p.status === "entwurf" ? " entwurf" : ""}">
@@ -52,7 +54,12 @@ export function uebersicht(konto: Konto, pakete: Lernpaket[], zustaende?: Map<nu
 <p>${escape(p.beschreibung)}</p>${zustaende?.has(p.id) ? `<p class="zustand">Fortschritt: ${zustaende.get(p.id)}</p>` : ""}</div>`,
     )
     .join("\n");
-  return rahmen("Lernpakete", `<h1>Lernpakete</h1>${karten}`, konto);
+  const hinweis = neu.length
+    ? `<div class="karte neu"><h2>Neu veröffentlicht seit Ihrem letzten Besuch</h2><ul>${neu
+        .map((n) => `<li><a href="/lernpakete/${n.slug}">${escape(n.titel)}</a></li>`)
+        .join("")}</ul></div>`
+    : "";
+  return rahmen("Lernpakete", `<h1>Lernpakete</h1>${hinweis}${karten}`, konto);
 }
 
 export function detailseite(konto: Konto, paket: Lernpaket, teile: Bestandteil[]): string {
@@ -60,6 +67,9 @@ export function detailseite(konto: Konto, paket: Lernpaket, teile: Bestandteil[]
   return rahmen(
     paket.titel,
     `<div class="karte"><h1>${escape(paket.titel)}</h1><p>${escape(paket.beschreibung)}</p><ul>${liste}</ul>
+${konto.rolle === "kuratorin" && paket.status === "entwurf"
+      ? `<form method="post" action="/lernpakete/${paket.slug}/veroeffentlichen"><button type="submit">Veröffentlichen</button></form>`
+      : ""}
 <p><a href="/lernpakete">Zurück zur Übersicht</a></p></div>`,
     konto,
   );

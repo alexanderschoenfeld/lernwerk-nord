@@ -33,6 +33,7 @@ Diese Seite beschreibt die Tabellen der Lernplattform und die Rollen, mit denen 
 | `email` | Adresse für die Anmeldung | Text, eindeutig |
 | `passwort_hash` | Passwort als scrypt-Hash | Text |
 | `angemeldet_am` | Zeitpunkt, zu dem das Konto angelegt wurde | `JJJJ-MM-TTThh:mm:ss` |
+| `letzter_besuch_am` | Tag, an dem die Lernende zuletzt die Übersicht geöffnet hat; leer bis zum ersten Besuch | `JJJJ-MM-TT` oder leer |
 
 ## Felder der Tabelle `lernpakete`
 
@@ -84,5 +85,5 @@ Schlüssel ist das Paar aus `lernende_id` und `bestandteil_id`; je Lernende und 
 
 | Rolle | Konten in | Darf |
 |---|---|---|
-| `lernende` | `lernende` | veröffentlichte Lernpakete ansehen und bearbeiten, den eigenen Lernfortschritt sehen |
-| `kuratorin` | `kuratorinnen` | alle Lernpakete ansehen, auch Entwürfe; sieht keinen Lernfortschritt |
+| `lernende` | `lernende` | veröffentlichte Lernpakete ansehen und bearbeiten, den eigenen Lernfortschritt und den Hinweis auf neu veröffentlichte Lernpakete sehen |
+| `kuratorin` | `kuratorinnen` | alle Lernpakete ansehen, auch Entwürfe, und Entwürfe veröffentlichen; sieht keinen Lernfortschritt |

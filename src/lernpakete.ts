@@ -29,3 +29,11 @@ export function lernpaket(db: DatabaseSync, slug: string, rolle: Rolle): Lernpak
 export function bestandteileVon(db: DatabaseSync, id: number): Bestandteil[] {
   return db.prepare("SELECT art, titel, pfad FROM bestandteile WHERE lernpaket_id = ? ORDER BY id").all(id) as Bestandteil[];
 }
+
+// Veröffentlicht einen Entwurf mit dem Tag der Veröffentlichung (Ticket 02); ein veröffentlichtes Lernpaket bleibt, wie es ist.
+export function veroeffentlichen(db: DatabaseSync, slug: string, am = new Date().toISOString().slice(0, 10)): boolean {
+  const ergebnis = db
+    .prepare("UPDATE lernpakete SET status = 'veroeffentlicht', veroeffentlicht_am = ? WHERE slug = ? AND status = 'entwurf'")
+    .run(am, slug);
+  return ergebnis.changes === 1;
+}

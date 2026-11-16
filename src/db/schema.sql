@@ -13,7 +13,8 @@ CREATE TABLE lernende (
   name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   passwort_hash TEXT NOT NULL,
-  angemeldet_am TEXT NOT NULL
+  angemeldet_am TEXT NOT NULL,
+  letzter_besuch_am TEXT
 );
 
 CREATE TABLE lernpakete (

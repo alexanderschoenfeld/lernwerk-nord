@@ -44,6 +44,10 @@ _Avoid_: unveröffentlicht, privat
 **Veröffentlicht**:
 Ein Lernpaket, das Lernende sehen und bearbeiten können.
 
+**Veröffentlichen**:
+Die Kuratorin macht aus einem Entwurf ein veröffentlichtes Lernpaket; der Tag der Veröffentlichung bleibt danach fest.
+_Avoid_: freigeben, freischalten
+
 ### Lernfortschritt
 
 **Belegung**:
@@ -63,3 +67,12 @@ Ein Lernpaket ist begonnen, sobald die Lernende einen seiner Bestandteile öffne
 **Abgeschlossen**:
 Ein Lernpaket gilt als abgeschlossen, sobald die Lernende alle seine Bestandteile (Workbook, Anleitung, Erklärseite) mindestens einmal geöffnet hat. Eine Belegung, die schon einen Abschluss trägt, bleibt abgeschlossen, auch ohne Aufrufe; erneutes Öffnen ändert nichts.
 _Avoid_: erledigt, fertig, durchgearbeitet
+
+### Neuigkeiten
+
+**Letzter Besuch**:
+Der Tag, an dem eine Lernende zuletzt die Übersicht geöffnet hat; die Kuratorin hat keinen.
+
+**Neu veröffentlicht**:
+Neu ist ein Lernpaket, dessen Tag der Veröffentlichung auf den Tag des letzten Besuchs der Übersicht fällt oder danach. Die Übersicht nennt es oben bis zum nächsten Besuch an einem späteren Tag.
+_Avoid_: Benachrichtigung, Mitteilung (die Lernplattform verschickt nichts)

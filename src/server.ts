@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 import { abmelden, anmelden, kontoZu } from "./auth.ts";
 import { verbinden } from "./db/verbindung.ts";
 import { aufrufFesthalten, fortschritt } from "./fortschritt.ts";
-import { bestandteileVon, lernpaket, sichtbareLernpakete } from "./lernpakete.ts";
+import { bestandteileVon, lernpaket, sichtbareLernpakete, veroeffentlichen } from "./lernpakete.ts";
+import { uebersichtBesucht } from "./neuigkeiten.ts";
 import { anmeldeseite, detailseite, uebersicht } from "./seiten.ts";
 
 const db = verbinden();
@@ -54,7 +55,14 @@ createServer(async (anfrage, antwort) => {
 
   if (url.pathname === "/lernpakete") {
     const zustaende = konto.rolle === "lernende" ? fortschritt(db, konto.id) : undefined;
-    return senden(antwort, 200, uebersicht(konto, sichtbareLernpakete(db, konto.rolle), zustaende));
+    const neu = konto.rolle === "lernende" ? uebersichtBesucht(db, konto.id) : [];
+    return senden(antwort, 200, uebersicht(konto, sichtbareLernpakete(db, konto.rolle), zustaende, neu));
+  }
+  const freigabe = /^\/lernpakete\/([a-z0-9-]+)\/veroeffentlichen$/.exec(url.pathname);
+  if (freigabe && anfrage.method === "POST") {
+    if (konto.rolle !== "kuratorin") return senden(antwort, 403, "Nur die Kuratorin darf veröffentlichen");
+    veroeffentlichen(db, freigabe[1]);
+    return umleiten(antwort, `/lernpakete/${freigabe[1]}`);
   }
   const detail = /^\/lernpakete\/([a-z0-9-]+)$/.exec(url.pathname);
   if (detail) {
